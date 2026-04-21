@@ -4,6 +4,7 @@ import "../app/globals.css";
 import { cn } from "@/lib/utils";
 import LightRays from "@/components/LightRays";
 import Navber from "@/components/Navber";
+import { PostHogProvider } from "./providers";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -53,7 +54,9 @@ export default function RootLayout({
             saturation={1.2}
           />
         </div>
-        <main className="relative z-10">{children}</main>
+        <PostHogProvider>
+          <main className="relative z-10">{children}</main>
+        </PostHogProvider>
       </body>
     </html>
   );
